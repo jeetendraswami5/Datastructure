@@ -8,7 +8,7 @@ struct Node
 
 Node* create_node(int n)          
 {
-	Node *ptr = new Node;
+        Node *ptr = new Node;
 	ptr->info = n;
 	ptr->next = NULL;
 	return ptr;
