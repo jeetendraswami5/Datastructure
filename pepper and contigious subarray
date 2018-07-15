@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int t,n,count,x;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        count = 0;
+        x=0;
+        int *a = new int[n];
+        
+        
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+    
+        for(int i=0;i<n;i++)
+        {
+            if(a[i]%2 == 0)
+            {
+                x++;
+             
+            }
+            else
+            {
+                if(count<x)
+                {
+                    count = x;
+                     x=0;
+                }
+                 
+            }
+          
+        }
+        
+        if(count<x)
+                {
+                    count = x;
+                }
+         
+        if(count == 0){
+            cout<<"-1"<<endl;
+        }
+        else
+          cout<<count<<endl;
+        
+        delete []a;
+       
+    }
+}
