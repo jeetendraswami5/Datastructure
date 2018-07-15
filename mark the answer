@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	long int n,x,count = 0,flag = 0;
+	cin>>n>>x;
+	long *a = new long[n];
+	for(int i=0;i<n;i++)
+	{
+	    cin>>a[i];
+	}
+	for(int i=0;i<n;i++)
+	{
+	    if(flag<2)
+	    {
+    	    if(a[i]<=x)
+    	    {
+    	        count++;
+    	    }
+    	    else
+    	 
+    	    if(a[i]>x)
+    	    {
+    	        flag++;
+    	    }
+    	   
+	    }
+	    
+	}
+	cout<<count;
+	delete []a;
+}
