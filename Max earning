@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int t,n,r,k=1,income,max;
+    cin>>t;
+    while(t--)
+    {
+        income=0;
+        k=1;
+        cin>>n>>r;
+        long *a = new long[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        max = a[0];
+        for(int i=0;i<n;i++)
+        {
+           if(max<a[i])
+           {
+               max = a[i];
+               k++;
+           }
+            
+        }
+        income = k*r;
+        cout<<income<<endl;
+        delete []a;
+    }
+}
