@@ -1,14 +1,15 @@
 #include<iostream>
+#include<stdlib.h>
 using namespace std;
 struct Node
 {
 	int info;
 	Node *next;
-} *Start,*save,*newptr,*rear;
+} *Start,*save,*newptr,*rear,*ptr;
 
 Node* create_node(int n)          
 {
-        Node *ptr = new Node;
+	Node *ptr = new Node;
 	ptr->info = n;
 	ptr->next = NULL;
 	return ptr;
@@ -17,12 +18,25 @@ Node* create_node(int n)
 void Insert_beg(Node *np)
 {
 	if(Start == NULL)
-		Start = np;
+		Start = rear = np;
 	else
 	{
 		save = Start;
 		Start = np;
 		np-> next = save;		
+	}
+}
+void delNode()  //from beg
+{
+	if(Start == NULL)
+	{
+		cout<<"Underflow!!!";
+	}
+	else
+	{
+		ptr = Start;
+		Start = Start -> next;
+		delete ptr;
 	}
 }
 void Insert_end(Node *np)
@@ -52,6 +66,7 @@ int main()
 	int ch = 1;
 	int m=1;
 	int n;
+	int a;
 	
 
 	
@@ -87,13 +102,18 @@ int main()
 			    {
 			    	Insert_end(newptr);
 			    	cout<<"\nNow List is:\n";
-			     	Display(newptr);
+			     	Display(Start);
 				}
-				
-				
 				cout<<"\nWant to contineu..(1/2):";
-				cin>>m;  
+				cin>>m;
 	}
+		cout<<"Want to delete Node (1/2):";
+				cin>>a;
+				if(a == 1)
+				{
+					delNode();
+					Display(Start);
+				}
     
     
 	return 0;
