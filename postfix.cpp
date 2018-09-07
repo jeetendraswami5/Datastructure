@@ -9,10 +9,21 @@ int calc(char *ch)
 	stack<char>s;
 	for(int i = 0 ; ch[i] ; i++)
 	{
+		if(ch[i] == ' ')
+		{
+			continue;
+		}
+		else
 		if(isdigit(ch[i]))
 		{
-			temp = ch [i];
-			s.push(temp - '0');
+			int num =0;
+			while(isdigit(ch[i]))
+			{
+				num = num*10 + (int)(ch[i] - '0');
+				i++;
+			}
+			
+			s.push(num);
 		}
 		else
 		{
@@ -41,7 +52,7 @@ int calc(char *ch)
 }
 int main()
 {
-	char ch[] = "546*+9-";
+	char ch[] = "51 6 * 63 + 9 - ";
 	cout<<"\nPostfix value of: "<<ch<<" is: "<<calc(ch);
 	return 0;
 }
