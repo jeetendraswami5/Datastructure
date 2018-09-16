@@ -4,7 +4,8 @@ using namespace std;
 struct node{
 	int data;
 	node *next;
-}*start,*rear;
+}*start,*rear,*prev;
+
 
 node *create(int data)
 {
@@ -18,7 +19,7 @@ node *create(int data)
 void insertbeg(node *ptr)
 {
 		if(start == NULL)
-		start = ptr;
+		start = rear =  ptr;
 		else
 		{
 			node*np = start;
@@ -38,16 +39,35 @@ void insertend(node*ptr)
 	}
 }
 
-void insertbet(node*ptr,int n)
+void insertbet(node*ptr,int p)
 {
-	while(ptr != NULL)
+	node * n = start;
+	while(n != NULL)
 	{
-		if(ptr->data == n)
+		if(n->data == p)
 		{
-			node *temp = ptr->next;
-			ptr->next = ptr;
+			node *temp = n->next;
+			n->next = ptr;
 			ptr->next = temp;
+			break;
 		}
+		n = n->next;
+	}
+}
+
+void delnode(int p)
+{
+	node * x = start;
+	while(x != NULL)
+	{
+		if(x->data == p)
+		{
+			prev->next = x->next;
+			delete(x); 
+			break;
+		}
+		prev =x;
+		x = x->next;
 	}
 }
 
@@ -62,6 +82,7 @@ void display(node*np)
 
 int main()
 {
+	start = NULL;
 	char ch = 'y';int mh,n,x;
 	while(ch == 'y')
 	{
@@ -69,22 +90,32 @@ int main()
 	    cin>>n;
 		node*newptr = create(n);
 	
-		cout<<"\n1 for beg , 2 for end , 3 for between:";
+		cout<<"\n1 for beg , 2 for end , 3 for between, 4 for delete node:";
 		cin>>mh;
+		if(mh == 1)
+		insertbeg(newptr);
 		
-		switch(mh)
-		{
-			case 1: insertbeg(newptr);
-					break;
-			
-			case 2: insertend(newptr);
-					break;
-			
-			case 3: cout<<"\nplace at which node insert:";
-					cin>>x;
-					insertbet(newptr,x);
-					break;
+		else
+		if(mh == 2)
+		insertend(newptr);
+		
+		else
+		if(mh == 3)
+	    {
+	    	cout<<"\nplace at which you want to insert:";
+	    	cin>>x;
+	    	insertbet(newptr,x);
+	    	
 		}
+		else
+		if(mh == 4)
+		{
+			cout<<"\nnode to delete:";
+			cin>>x;
+			delnode(x);
+		}
+		
+		
 		
 		cout<<"\nMORE:";
 		cin>>ch;
