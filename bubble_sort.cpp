@@ -18,11 +18,11 @@ void bubble_sort(int *a , int n )
 		{
 			if(a[j]>a[j+1])
 			{
-				count++;
+				
 				swap(&a[j] , &a[j+1]);
 				flag = 1;
 			}
-			count++;
+		
 		}
 		
 		if(flag == 0)
